@@ -6,7 +6,16 @@ deploy.title: "サンプルのデプロイ・ステージ"
 deploy.description: "サンプル・ツールチェーン"
 deploy.longDescription: "Delivery Pipeline は、継続的デプロイメントを自動化します。"
 deploy.appDescription: "Hello World アプリの名前"
+deploy.clusterNameDescription: "Kubernetesのクラスタ名"
+deploy.bxApiKeyDescription: "生成されたBluemixのAPIキー"
+deploy.spaceNameDescription: "Bluemix Container Registoryのプライベートスペース名"
+
+
 deploy.appName: "アプリ名"
+deploy.clusterName: "クラスタ名"
+deploy.bxApiKey: "Bluemix APIキー"
+deploy.spaceName: "スペース名"
+
 region: "地域"
 organization: "組織"
 space: "スペース"

@@ -13,9 +13,9 @@ template:
     - sample-repo
   info:
     git url: >-
-      [https://github.com/open-toolchain/simple-toolchain](https://github.com/open-toolchain/simple-toolchain)
+      [https://github.com/owadah/simple-toolchain](https://github.com/owadah/simple-toolchain)
     git branch: >-
-      [master](https://github.com/open-toolchain/simple-toolchain/tree/master)
+      [master](https://github.com/owadah/simple-toolchain/tree/master)
 toolchain:
   name: 'simple-toolchain-{{timestamp}}'
   template:
@@ -26,7 +26,7 @@ services:
     service_id: githubpublic
     parameters:
       repo_name: '{{toolchain.name}}'
-      repo_url: 'https://github.com/open-toolchain/node-hello-world'
+      repo_url: 'https://github.com/owadah/node-hello-world'
       type: clone
       has_issues: true
       enable_traceability: true
@@ -46,12 +46,17 @@ services:
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          BX_API_KEY: '{{form.pipeline.parameters.bx-api-key}}'
+          CLUSTER_NAME: '{{form.pipeline.parameters.cluster-name}}'
+          SPACE_NAME: '{{form.pipeline.parameters.space-name}}'
         execute: true
   webide:
     service_id: orion
 form:
   pipeline:
     parameters:
-      prod-app-name: '{{services.sample-repo.parameters.repo_name}}'
+      prod-app-name: 'dummyapp'
+      cluster-name: 'mycluster'
+      space-name: 'myspacer'
     schema:
       $ref: deploy.json

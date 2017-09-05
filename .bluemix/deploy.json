@@ -1,110 +1,149 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "messages": {
-        "$i18n": "locales.yml"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "messages": {
+    "$i18n": "locales.yml"
+  },
+  "title": {
+    "$ref": "#/messages/deploy.title"
+  },
+  "description": {
+    "$ref": "#/messages/deploy.description"
+  },
+  "longDescription": {
+    "$ref": "#/messages/deploy.longDescription"
+  },
+  "type": "object",
+  "properties": {
+    "prod-region": {
+      "description": "The bluemix region",
+      "type": "string"
     },
-    "title": {
-        "$ref": "#/messages/deploy.title"
+    "prod-organization": {
+      "description": "The bluemix org",
+      "type": "string"
     },
-    "description": {
-        "$ref": "#/messages/deploy.description"
+    "prod-space": {
+      "description": "The bluemix space",
+      "type": "string"
     },
-    "longDescription": {
-        "$ref": "#/messages/deploy.longDescription"
+    "prod-app-name": {
+      "description": {
+        "$ref": "#/messages/deploy.appDescription"
+      },
+      "type": "string",
+      "pattern": "\\S"
     },
-    "type": "object",
-    "properties": {
-        "prod-region": {
-            "description": "The bluemix region",
-            "type": "string"
+    "cluster-name": {
+      "description": {
+        "$ref": "#/messages/deploy.clusterNameDescription"
+      },
+      "type": "string",
+    },
+    "space-name": {
+      "description": {
+        "$ref": "#/messages/deploy.spaceNameDescription"
+      },
+      "type": "string",
+    },
+    "bx-api-key": {
+      "description": {
+        "$ref": "#/messages/deploy.bxApiKeyDescription"
+      },
+      "type": "string",
+    }
+  },
+  "required": [
+    "prod-region",
+    "prod-organization",
+    "prod-space",
+    "bx-api-key",
+    "cluster-name",
+    "space-name",
+    "prod-app-name"
+  ],
+  "form": [{
+      "type": "validator",
+      "url": "/devops/setup/bm-helper/helper.html"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": {
+        "$ref": "#/messages/deploy.appName"
+      },
+      "key": "prod-app-name"
+    }, {
+      "type": "text",
+      "readonly": false,
+      "title": {
+        "$ref": "#/messages/deploy.bxApiKey"
+      },
+      "key": "bx-api-key"
+    }, {
+      "type": "text",
+      "readonly": false,
+      "title": {
+        "$ref": "#/messages/deploy.spaceName"
+      },
+      "key": "space-name"
+    }, {
+      "type": "text",
+      "readonly": false,
+      "title": {
+        "$ref": "#/messages/deploy.clusterName"
+      },
+      "key": "cluster-name"
+    } {
+      "type": "table",
+      "columnCount": 4,
+      "widths": [
+        "15%",
+        "28%",
+        "28%",
+        "28%"
+      ],
+      "items": [{
+          "type": "label",
+          "title": ""
         },
-        "prod-organization": {
-            "description": "The bluemix org",
-            "type": "string"
+        {
+          "type": "label",
+          "title": {
+            "$ref": "#/messages/region"
+          }
         },
-        "prod-space": {
-            "description": "The bluemix space",
-            "type": "string"
+        {
+          "type": "label",
+          "title": {
+            "$ref": "#/messages/organization"
+          }
         },
-        "prod-app-name": {
-            "description": {
-                "$ref": "#/messages/deploy.appDescription"
-            },
-            "type": "string",
-            "pattern": "\\S"
+        {
+          "type": "label",
+          "title": {
+            "$ref": "#/messages/space"
+          }
+        },
+        {
+          "type": "label",
+          "title": {
+            "$ref": "#/messages/prodStage"
+          }
+        },
+        {
+          "type": "select",
+          "key": "prod-region"
+        },
+        {
+          "type": "select",
+          "key": "prod-organization"
+        },
+        {
+          "type": "select",
+          "key": "prod-space",
+          "readonly": false
         }
-    },
-    "required": [
-        "prod-region",
-        "prod-organization",
-        "prod-space",
-        "prod-app-name"
-    ],
-    "form": [
-        {
-            "type": "validator",
-            "url": "/devops/setup/bm-helper/helper.html"
-        },
-        {
-            "type": "text",
-            "readonly": false,
-            "title": {
-                "$ref": "#/messages/deploy.appName"
-            },
-            "key": "prod-app-name"
-        },
-        {
-            "type": "table",
-            "columnCount": 4,
-            "widths": [
-                "15%",
-                "28%",
-                "28%",
-                "28%"
-            ],
-            "items": [
-                {
-                    "type": "label",
-                    "title": ""
-                },
-                {
-                    "type": "label",
-                    "title": {
-                        "$ref": "#/messages/region"
-                    }
-                },
-                {
-                    "type": "label",
-                    "title": {
-                        "$ref": "#/messages/organization"
-                    }
-                },
-                {
-                    "type": "label",
-                    "title": {
-                        "$ref": "#/messages/space"
-                    }
-                },
-                {
-                    "type": "label",
-                    "title": {
-                        "$ref": "#/messages/prodStage"
-                    }
-                },
-                {
-                    "type": "select",
-                    "key": "prod-region"
-                },
-                {
-                    "type": "select",
-                    "key": "prod-organization"
-                },
-                {
-                    "type": "select",
-                    "key": "prod-space",
-                    "readonly": false
-                }
-            ]
-        }
-    ]
+      ]
+    }
+  ]
 }
