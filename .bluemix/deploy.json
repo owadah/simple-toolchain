@@ -93,7 +93,7 @@
         "$ref": "#/messages/deploy.clusterName"
       },
       "key": "cluster-name"
-    } {
+    }, {
       "type": "table",
       "columnCount": 4,
       "widths": [
