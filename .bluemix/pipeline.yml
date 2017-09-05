@@ -10,7 +10,7 @@ stages:
   jobs:
   - name: Build
     type: builder
-- name: DEPLOY
+- name: Build NameSpace Stage
   inputs:
   - type: job
     stage: BUILD
@@ -18,23 +18,19 @@ stages:
   triggers:
   - type: stage
   properties:
-  - name: CF_APP_NAME
-    value: undefined
-    type: text
-  - name: APP_URL
-    value: undefined
-    type: text
   - name: SPACE_NAME
     value: ${SPACE_NAME}
     type: text
   jobs:
-  - name: Blue-Green Deploy
-    type: deployer
+  - name: Container build
+    type: builder
+    extension_id: ibm.devops.services.pipeline.container.builder
     target:
       region_id: ${PROD_REGION_ID}
       organization: ${PROD_ORG_NAME}
       space: ${PROD_SPACE_NAME}
-      application: ${CF_APP_NAME}
-    script: |
+    IMAGE_NAME: ${CF_APP_NAME}
+    USE_CACHED_LAYERS: 'true'
+    COMMAND: |
       #!/bin/bash
       bx cr namespace-add ${SPACE_NAME}
