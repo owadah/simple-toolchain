@@ -26,7 +26,7 @@ services:
     service_id: githubpublic
     parameters:
       repo_name: '{{toolchain.name}}'
-      repo_url: 'https://github.com/owadah/node-hello-world'
+      repo_url: 'https://github.ibm.com/HSDRepo/HSDRepo'
       type: clone
       has_issues: true
       enable_traceability: true
